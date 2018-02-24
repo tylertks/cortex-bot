@@ -38,3 +38,7 @@ d6 : 5
 For a roll of: 15
 with an effect die of: d8
 ```
+
+Add this bot to your discord server with the following link:
+
+`"https://discordapp.com/api/oauth2/authorize?client_id=416955698895912962&permissions=2048&scope=bot`
