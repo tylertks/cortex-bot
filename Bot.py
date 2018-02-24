@@ -82,9 +82,10 @@ async def roll(ctx,s:str):
         usableDice = []
         for x in range(0,length):
             index = find_highest_index(results)
-            top.append(results[index])
-            results.pop(index)
-            dice.pop(index)
+            if(results[index] != 1):
+                top.append(results[index])
+                results.pop(index)
+                dice.pop(index)
         dice = remove_spoilers(results,dice)
         if(len(top)>1):
             outstring+="\nFor a roll of: "+str(top[0]+top[1])
