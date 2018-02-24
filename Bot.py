@@ -170,7 +170,7 @@ async def help(ctx):
     embed.add_field(name="$cat", value="Gives a cute cat gif to lighten up the mood.", inline=False)
     embed.add_field(name="$info", value="Gives a little info about the bot", inline=False)
     embed.add_field(name="$help", value="Gives this message", inline=False)
-    embed.add_field(name="$roll", value="$roll 2d6+d8 will roll 2 d6s and 1 d8 and return the results")
+    embed.add_field(name="$roll", value="$roll 2d6+d8 will roll 2 d6s and 1 d8 and return the results. Dice can be separate with any character that is not whitespace, a number or the letter 'd'")
     await ctx.send(embed=embed)
 
 bot.run('NDE2OTU1Njk4ODk1OTEyOTYy.DXL_zQ.piWWLYD-umpnwTat5pb4kjgJXN4')
