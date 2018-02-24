@@ -75,7 +75,7 @@ async def roll(ctx,s:str):
         for x in range(0,len(results)):
             outstring+="d"+str(dice[x])+" : "+str(results[x])+"\n"
         length = 0
-        if(len(results)>2):
+        if(len(results)>1):
             length = 2
         else:
             length = 1
@@ -94,7 +94,9 @@ async def roll(ctx,s:str):
             outstring+="\nwith an effect die of: d"+str(dice[0])
         else:
             outstring+="\nwith an effect die of: d4"
-        if(fumbles>0):
+        if(fumbles==1):
+            outstring+="\nand "+str(fumbles)+" spoiler"
+        elif(fumbles > 1):
             outstring+="\nand "+str(fumbles)+" spoilers"
         await ctx.send(outstring)
     except:
