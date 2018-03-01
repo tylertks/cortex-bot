@@ -247,4 +247,3 @@ async def help(ctx):
 
 connectString = open('connectstring.txt','r')
 bot.run(connectString.readline())
-#bot.run('NDE2OTU1Njk4ODk1OTEyOTYy.DXL_zQ.piWWLYD-umpnwTat5pb4kjgJXN4')
