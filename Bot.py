@@ -25,7 +25,58 @@ async def greet(ctx):
     await ctx.send(":smiley: :wave: Hello, there!")
 
 @bot.command()
-async def roll(ctx,s:str):
+async def cr(ctx,s:str):
+    try:
+        results=[]
+        dice=[]
+        top=[]
+        fumbles=0
+        currentTop = 0
+        currentTopIndex = 0
+        to_roll = re.findall('(?:\d*?d\d+)',s.lower())
+        print(to_roll)
+        for roll in to_roll:
+            print(list(roll))
+            if(list(roll)[0] == 'd'):
+                die = 0
+                if(len(roll)==2):
+                    die = int(list(roll)[1])
+                else:
+                    dlist = list(roll)
+                    dlist.pop(0)
+                    die = int(''.join(dlist))
+                a = random.randint(1,die)
+                if(a==1):
+                    fumbles+=1
+                results.append(a)
+                print(a)
+                dice.append(die)
+            else:
+                d = list(roll).index('d')
+                num=int(''.join(list(roll)[0:d]))
+                print(num)
+                for x in range(0,num):
+                    die = 0
+                    if(len(roll)==2):
+                        die = int(list(roll)[1])
+                    else:
+                        dlist = list(roll)
+                        for y in range(0,len(str(num))+1):
+                            dlist.pop(0)
+                        dd = ''.join(dlist)
+                        die = int(dd)
+                    a = random.randint(1,die)
+                    results.append(a)
+                    print(a)
+                    if(a==1):
+                        fumbles+=1
+                    dice.append(die)
+        outstring = "RESULTS\n--------\n"
+        for x in range(0,len(results)):
+            outstring+="d"+str(dice[x])+" : "+str(results[x])+"\n"
+
+@bot.command()
+async def cr(ctx,s:str):
     try:
         results=[]
         dice=[]
@@ -122,29 +173,42 @@ def remove_spoilers(a:list, b:list):
 
 @bot.command()
 async def cat(ctx):
-    a = random.randint(1,10)
-    catgif=""
-    if(a == 1):
-        catgif="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
-    elif(a == 2):
-        catgif="https://i.imgur.com/cVr63gm.gifv"
-    elif(a == 3):
-        catgif="https://i.imgur.com/kEDlSCp.gifv"
-    elif(a == 4):
-        catgif="https://i.imgur.com/OM1jAhs.gif"
-    elif(a == 5):
-        catgif="https://i.imgur.com/W0JfyHW.gif"
-    elif(a == 6):
-        catgif="https://i.imgur.com/P7RiAtO.gifv"
-    elif(a == 7):
-        catgif="http://i.imgur.com/LbPsLrC.gifv"
-    elif(a==8):
-        catgif="http://i.imgur.com/YV8DNtr.gifv"
-    elif(a==9):
-        catgif="https://gfycat.com/OrangeBowedAlpineroadguidetigerbeetle"
-    elif(a==10):
-        catgif="https://i.imgur.com/CyRKrHm.gifv"
+    #a = random.randint(1,10)
+    catlist = [
+    "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
+    ,"https://i.imgur.com/cVr63gm.gifv"
+    ,"https://i.imgur.com/kEDlSCp.gifv"
+    ,"https://i.imgur.com/OM1jAhs.gif"
+    ,"https://i.imgur.com/W0JfyHW.gif"
+    ,"https://i.imgur.com/P7RiAtO.gifv"
+    ,"http://i.imgur.com/LbPsLrC.gifv"
+    ,"http://i.imgur.com/YV8DNtr.gifv"
+    ,"https://gfycat.com/OrangeBowedAlpineroadguidetigerbeetle"
+    ,"https://i.imgur.com/CyRKrHm.gifv"
+    ]
+    a = random.randint(0,len(catlist)-1)
+    catgif=catlist[a]
     await ctx.send(catgif)
+
+@bot.command()
+async def dog(ctx):
+    doglist = [
+    "https://imgur.com/WO1b8ox"
+    ,"https://gfycat.com/UnderstatedCourageousIberiannase"
+    ]
+    a = random.randint(0,len(doglist)-1)
+    doggif = doglist[a]
+    await ctx.send(doggif)
+
+@bot.command()
+async def dicks(ctx):
+    dicklist = [
+        "https://i.imgur.com/2i6fTNP.gif"
+        ,"http://stream1.gifsoup.com/view3/4291631/weird-guy-slap-dong-pole-o.gif"
+    ]
+    a = random.randint(0,len(dicklist)-1)
+    dickgif = dicklist[a]
+    await ctx.send(dickgif)
 
 @bot.command()
 async def alien(ctx):
@@ -171,9 +235,13 @@ bot.remove_command('help')
 async def help(ctx):
     embed = discord.Embed(title="Cortex Dice Roller", description="A Dice Rolling Bot for Cortex Prime. List of commands are:", color=0xeee657)
     embed.add_field(name="$cat", value="Gives a cute cat gif to lighten up the mood.", inline=False)
+    embed.add_field(name="$dog", value="Gives a cute dog gif")
     embed.add_field(name="$info", value="Gives a little info about the bot", inline=False)
     embed.add_field(name="$help", value="Gives this message", inline=False)
-    embed.add_field(name="$roll", value="$roll 2d6+d8 will roll 2 d6s and 1 d8 and return the results. Dice can be separate with any character that is not whitespace, a number or the letter 'd'")
+    embed.add_field(name="$cr", value="$cr 2d6+d8 will roll 2 d6s and 1 d8 and return the results with cortex rules applied Dice can be separate with any character that is not whitespace, a number or the letter 'd'")
+    embed.add_feidl(name="$roll", value="Rolls dice just like $cr, but without the cortex interpretation (no spoilers, effect die, etc)")
     await ctx.send(embed=embed)
 
-bot.run('NDE2OTU1Njk4ODk1OTEyOTYy.DXL_zQ.piWWLYD-umpnwTat5pb4kjgJXN4')
+connectString = open('connectstring.txt','r')
+bot.run(connectString.readline())
+#bot.run('NDE2OTU1Njk4ODk1OTEyOTYy.DXL_zQ.piWWLYD-umpnwTat5pb4kjgJXN4')
