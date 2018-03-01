@@ -25,7 +25,7 @@ async def greet(ctx):
     await ctx.send(":smiley: :wave: Hello, there!")
 
 @bot.command()
-async def cr(ctx,s:str):
+async def roll(ctx,s:str):
     try:
         results=[]
         dice=[]
@@ -74,6 +74,9 @@ async def cr(ctx,s:str):
         outstring = "RESULTS\n--------\n"
         for x in range(0,len(results)):
             outstring+="d"+str(dice[x])+" : "+str(results[x])+"\n"
+        await ctx.send(outstring)
+    except:
+        await ctx.send("Sorry, I couldn't process your request")
 
 @bot.command()
 async def cr(ctx,s:str):
