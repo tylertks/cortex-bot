@@ -1,5 +1,7 @@
 # cortex-bot
 
+*So I made this mostly for fun, and also because I couldn't find any cortex dice rollers at the time. If you want a good dice rolling bot for discord, use [CortexPal](https://donbisdorf.com/cortex-rpg-tools)*
+
 This is a Discord bot for the Cortex Prime Role Playing Game.
 
 It can roll any number of any sided dice, and will return the result of each die.
