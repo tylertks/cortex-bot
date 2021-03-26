@@ -1,6 +1,6 @@
 # cortex-bot
 
-*So I made this mostly for fun, and also because I couldn't find any cortex dice rollers at the time. If you want a good dice rolling bot for discord, use [CortexPal](https://donbisdorf.com/cortex-rpg-tools)* as this bot is no longer supported
+*So I made this mostly for fun, and also because I couldn't find any cortex dice rollers at the time. If you want a good dice rolling bot for discord, use [CortexPal](https://donbisdorf.com/cortex-rpg-tools) as this bot is no longer supported*
 
 This is a Discord bot for the Cortex Prime Role Playing Game.
 
